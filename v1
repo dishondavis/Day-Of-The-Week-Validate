@@ -1,0 +1,100 @@
+// This code validates the day of the week the user inputs
+// Validate Day of the Week
+// Programmer: Dishon Davis
+// Modfied: 02/26/2019
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	system("Title Day of the week with Validation");
+	system("color 4f");
+
+	char weekDay, cDay;
+
+	cout
+		<< endl
+		<< "\t Find the day of the week using switch case                                 \n"
+		<< "\t    validate input FIRST using while loop                                   \n"
+		<< "\t                 by D.Davis                                               \n\n";
+
+		cout
+		<< "                                                                              \n"
+		<< "  *************************************************************************** \n"
+		<< "  * You should have ONLY ONE input validation loop to check if the day code * \n"
+		<< "  * Make sure you that loop test ALL possible UNACCEPTALBE situations       * \n"
+		<< "  * If unacceptable input is found                                          * \n"
+		<< "  *           change the console color to b1 and                            * \n"
+		<< "  *           beep to attract the user's attention                          * \n"
+		<< "  * Consider using the conditional operator to customize your feedback      * \n"
+		<< "  *           (i.e.digit vs special char) INSIDE that loop.                 * \n"
+		<< "  * AFTER you validate that the input is valid                              * \n"
+		<< "  *           restore the console color and                                 * \n"
+		<< "  *           check if it is NOT capital and convert if needed              * \n"
+		<< "  * You are NOT allowed to use                                              * \n"
+		<< "  *           the ASCII values of ANY character                             * \n"
+		<< "  *           any library functions, like the                               * \n"
+		<< "  *           isdigit, isupper, toupper, isalnum, isalpha, etc.             * \n"
+		<< "  *************************************************************************** \n\n\n";
+
+	cout
+		<< " Day codes are :  \n"
+		<< " `M' for Monday   \n"
+		<< " `T' for Tuesday  \n"
+		<< " `W' for Wednesday\n"
+		<< " `H' for Thursday \n"
+		<< " `F' for Friday   \n"
+		<< " `S' for Weekend  \n";
+
+	while (true)
+	{
+		system("color 4f");
+
+		cout << "\n\nPlease enter the code of the day of the week you want: ";
+
+		cin >> weekDay;
+		cin.ignore(100, '\n');
+
+		while ((weekDay >= '0' && weekDay <= '9') || (weekDay < 'A' && weekDay <= 'Z'))
+		{
+			cout << "\a";
+			system("color b1");
+			cout << "\nYou can NOT have Digits or Special Characters for days code in this program. \n Please give a letter code. ";
+			cin >> weekDay;
+			cin.ignore(100, '\n');
+		}
+
+		if (weekDay >= 'a' && weekDay <= 'z')
+		{
+			cDay = weekDay - ' ';
+			cout << "\t\n Remember that proper nouns start with a capital."
+				<< " You should have typed... " << cDay << "'\n";
+		}
+
+		else if (weekDay < 'A' && weekDay > 'Z')
+		{
+			cout << " You can NOT have SPEACIAL CHARACTERS for days code in this program. Please give a letter code ";
+			cin >> weekDay;
+			cin.ignore(100, '\n');
+			system("pause");
+		}
+    
+		cout << " \n ****   Your day is: ";
+
+		switch (weekDay)
+		{
+		case 'm': case 'M': cout << "Monday.   \n"; break;
+		case 't': case 'T': cout << "Tuesday.  \n"; break;
+		case 'w': case 'W': cout << "Wednesday.\n"; break;
+		case 'h': case 'H': cout << "Thursday. \n"; break;
+		case 'f': case 'F': cout << "Friday.   \n"; break;
+		case 's': case 'S': cout << "Weekend.  \n"; break;
+		default: cout << "No such day.\n";
+
+		}
+	}
+
+	system("pause");
+	return 0;
+}
